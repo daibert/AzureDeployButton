@@ -44,7 +44,7 @@
   "resources": [
     {
       "apiVersion": "2014-06-01",
-      "name": "[parameters('hostingPlanName')]",
+      "name": "Daibert-2",
       "type": "Microsoft.Web/serverFarms",
       "location": "[parameters('siteLocation')]",
       "properties": { 
