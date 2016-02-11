@@ -1,2 +1,1 @@
-# AzureDeployButton
-Test the Azure Deploy Button
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)

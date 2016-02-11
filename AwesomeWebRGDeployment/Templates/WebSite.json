@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serverFarms_AwesomeWebAppDemoPlan_name": {
+      "type": "string",
+      "defaultValue": "AwesomeWebAppDemoPlan2"
+    },
+    "sites_AwesomeWebAppDemo_name": {
+      "type": "string",
+      "defaultValue": "AwesomeWebAppDemo2"
+    }
+  },
+  "variables": { },
+  "resources": [
+    {
+      "comments": "Generalized from resource: /subscriptions/8afa29c2-0912-446c-899d-3a69a6821559/resourceGroups/AwesomeWebAppDemo/providers/Microsoft.Web/serverFarms/AwesomeWebAppDemoPlan",
+      "type": "Microsoft.Web/serverFarms",
+      "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
+      },
+      "name": "[parameters('serverFarms_AwesomeWebAppDemoPlan_name')]",
+      "apiVersion": "2015-08-01",
+      "location": "West US",
+      "properties": {
+        "name": "[parameters('serverFarms_AwesomeWebAppDemoPlan_name')]",
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "comments": "Generalized from resource: /subscriptions/8afa29c2-0912-446c-899d-3a69a6821559/resourceGroups/AwesomeWebAppDemo/providers/Microsoft.Web/sites/AwesomeWebAppDemo",
+      "type": "Microsoft.Web/sites",
+      "kind": "WebApp",
+      "name": "[parameters('sites_AwesomeWebAppDemo_name')]",
+      "apiVersion": "2015-08-01-preview",
+      "location": "West US",
+      "properties": {
+        "name": "[parameters('sites_AwesomeWebAppDemo_name')]",
+        "hostNames": [
+          "awesomewebappdemo2.azurewebsites.net"
+        ],
+        "enabledHostNames": [
+          "awesomewebappdemo2.azurewebsites.net",
+          "awesomewebappdemo2.scm.azurewebsites.net"
+        ],
+        "hostNameSslStates": [
+          {
+            "name": "awesomewebappdemo2.azurewebsites.net",
+            "sslState": 0,
+            "thumbprint": null,
+            "ipBasedSslState": 0
+          },
+          {
+            "name": "awesomewebappdemo2.scm.azurewebsites.net",
+            "sslState": 0,
+            "thumbprint": null,
+            "ipBasedSslState": 0
+          }
+        ],
+        "serverFarmId": "[resourceId('Microsoft.Web/serverFarms', parameters('serverFarms_AwesomeWebAppDemoPlan_name'))]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverFarms', parameters('serverFarms_AwesomeWebAppDemoPlan_name'))]"
+      ]
+    }
+  ]
+}
