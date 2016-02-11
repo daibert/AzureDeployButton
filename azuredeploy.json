@@ -57,7 +57,7 @@
     {
       "apiVersion": "2014-06-01",
       "name": "[parameters('siteName')]",
-      "type": "Microsoft.Web/Sites",
+      "type": "Daibert",
       "location": "[parameters('siteLocation')]",
       "dependsOn": [
         "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
@@ -75,7 +75,7 @@
           "type": "config",
           "name": "web",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('siteName2'))]" 
+            "[concat('Microsoft.Web/Sites/', parameters('siteName'))]" 
           ],
           "properties": {
             "appSettings": [
