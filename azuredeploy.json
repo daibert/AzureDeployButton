@@ -75,7 +75,7 @@
           "type": "config",
           "name": "web",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('siteName'))]"
+            "[concat('Microsoft.Web/Sites/', parameters('siteName2'))]"
           ],
           "properties": {
             "appSettings": [
