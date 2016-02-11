@@ -47,7 +47,7 @@
       "name": "[parameters('hostingPlanName')]",
       "type": "Microsoft.Web/serverFarms",
       "location": "[parameters('siteLocation')]",
-      "properties": {
+      "properties": { 
         "name": "[parameters('hostingPlanName')]",
         "sku": "[parameters('sku')]",
         "workerSize": "[parameters('workerSize')]",
