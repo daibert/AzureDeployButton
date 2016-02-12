@@ -13,26 +13,17 @@
     },
     "sku": {
       "type": "string",
-      "allowedValues": [
-        "Free",
-        "Shared",
-        "Basic",
-        "Standard"
-      ],
-      "defaultValue": "Free"
+      "allowedValues": [ "Free", "Shared", "Basic", "Standard" ],
+      "defaultValue": "Shared"
     },
     "workerSize": {
       "type": "string",
-      "allowedValues": [
-        "0",
-        "1",
-        "2"
-      ],
+      "allowedValues": [ "0", "1", "2" ],
       "defaultValue": "0"
     },
     "someAppSetting": {
       "type": "string",
-      "defaultValue": "Test App Setting Value"
+      "defaultValue": "Awesome Web App Demo"
     },
     "repoUrl": {
       "type": "string"
@@ -41,18 +32,51 @@
       "type": "string"
     }
   },
+
   "resources": [
     {
       "apiVersion": "2014-06-01",
-      "name": "Daibert-2",
-      "type": "Microsoft.Web/serverFarms",
+      "name": "[parameters('siteName')]",
+      "type": "Microsoft.Web/Sites",
       "location": "[parameters('siteLocation')]",
-      "properties": { 
-        "name": "[parameters('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "numberOfWorkers": 1
-      }
+      "dependsOn": ["[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"],
+      "tags": {"[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]": "empty"},
+      "properties": {
+            "name": "[parameters('siteName')]",
+            "serverFarm": "[parameters('hostingPlanName')]"
+      },
+      "resources": [
+        {
+          "apiVersion": "2014-04-01",
+          "type": "config",
+          "name": "web",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', parameters('siteName'))]"
+          ],
+          "properties": {
+            "appSettings": [
+              {
+                "name": "someAppSetting",
+                "value": "[parameters('someAppSetting')]"
+              }
+            ]
+          }
+        },
+        {
+          "apiVersion": "2014-04-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+            "[concat('Microsoft.Web/Sites/', parameters('siteName'), '/config/web')]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('repoUrl')]",
+            "branch": "[parameters('branch')]",
+            "IsManualIntegration": true
+          }
+        }
+      ]
     }
   ]
 }
