@@ -47,10 +47,12 @@
       "name": "Daibert-2",
       "type": "Microsoft.Web/serverFarms",
       "location": "[parameters('siteLocation')]",
-      "properties": {
+      "properties": { 
         "name": "[parameters('hostingPlanName')]",
         "sku": "[parameters('sku')]",
         "workerSize": "[parameters('workerSize')]",
         "numberOfWorkers": 1
       }
     }
+  ]
+}
