@@ -52,7 +52,7 @@
         "sku": "[parameters('sku')]",
         "workerSize": "[parameters('workerSize')]",
         "numberOfWorkers": 1
-      }
+      }  
     },
     {
       "apiVersion": "2014-06-01",
