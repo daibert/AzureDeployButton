@@ -8,7 +8,7 @@
     "hostingPlanName": {
       "type": "string"
     },
-    "siteLocation": {
+    "siteLocation": { 
       "type": "string"
     },
     "sku": {
