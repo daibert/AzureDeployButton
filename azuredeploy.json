@@ -19,7 +19,7 @@
         "Basic",
         "Standard"
       ],
-      "defaultValue": "Shared"
+      "defaultValue": "Free"
     },
     "workerSize": {
       "type": "string",
@@ -32,7 +32,7 @@
     },
     "someAppSetting": {
       "type": "string",
-      "defaultValue": "Fabio Hara é legal #sqn"
+      "defaultValue": "Awesome App Demo Deployment 99"
     },
     "repoUrl": {
       "type": "string"
