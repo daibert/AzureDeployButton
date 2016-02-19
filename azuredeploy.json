@@ -1,4 +1,4 @@
-Enter file contents {
+{
   "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
@@ -32,7 +32,7 @@ Enter file contents {
     },
     "someAppSetting": {
       "type": "string",
-      "defaultValue": "Demo Channel 9 Brasil"
+      "defaultValue": "Awesome App Demo Deployment 99"
     },
     "repoUrl": {
       "type": "string"
@@ -103,4 +103,4 @@ Enter file contents {
       ]
     }
   ]
-}here
+}
